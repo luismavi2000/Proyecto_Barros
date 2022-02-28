@@ -17,7 +17,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-
 @RestController()
 public class EventoController {
 
@@ -38,12 +37,14 @@ public class EventoController {
         return  new ResponseEntity<>(evento, HttpStatus.OK);
     }
 
+    @CrossOrigin("*")
     @PostMapping(path = "/addEvento")
     public ResponseEntity<Evento> addEvento(@RequestBody Evento evento){
         Evento addEvento = eventoService.addEvento(evento);
         return new ResponseEntity<>(addEvento, HttpStatus.OK);
     }
 
+    @CrossOrigin("*")
     @PutMapping("/modifyEvento/{id}")
     public ResponseEntity<Evento> modifyEvento(@PathVariable Integer id, @RequestBody Evento
             newEvento) {
@@ -51,6 +52,7 @@ public class EventoController {
         return new ResponseEntity<>(addedEvento, HttpStatus.OK);
     }
 
+    @CrossOrigin("*")
     @DeleteMapping("/deleteEvento/{id}")
     public ResponseEntity<Evento> dellEventoByID(@PathVariable("id") Integer id){
         Evento dellEvento = eventoService.findEvento(id);
