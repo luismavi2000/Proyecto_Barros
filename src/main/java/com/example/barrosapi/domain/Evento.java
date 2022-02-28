@@ -310,7 +310,7 @@ public class Evento {
             joinColumns = @JoinColumn(name = "id_evento", nullable = false),
             inverseJoinColumns = @JoinColumn(name = "id_cliente ", nullable = false)
     )
-    @ManyToMany()
+    @ManyToMany(cascade = CascadeType.REMOVE)
     public List<Cliente> getCliente() {
         return cliente;
     }
